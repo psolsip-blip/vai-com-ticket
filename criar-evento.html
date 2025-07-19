@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criar Evento</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <h2>Criar Novo Evento</h2>
+    <form id="formEvento" class="grid">
+      <input type="text" id="titulo" placeholder="Título do Evento" required />
+      <input type="date" id="data" required />
+      <input type="text" id="local" placeholder="Local" required />
+      <textarea id="descricao" placeholder="Descrição do evento"></textarea>
+      <button type="submit">Publicar Evento</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('formEvento');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const eventos = JSON.parse(localStorage.getItem('eventos') || '[]');
+      eventos.push({
+        titulo: form.titulo.value,
+        data: form.data.value,
+        local: form.local.value,
+        descricao: form.descricao.value
+      });
+      localStorage.setItem('eventos', JSON.stringify(eventos));
+      alert('Evento criado com sucesso!');
+      form.reset();
+    });
+  </script>
+</body>
+</html>

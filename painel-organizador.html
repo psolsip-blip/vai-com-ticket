@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel do Organizador</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <h2>Meus Eventos Criados</h2>
+    <div id="listaEventos"></div>
+  </main>
+
+  <script>
+    const lista = document.getElementById('listaEventos');
+    const eventos = JSON.parse(localStorage.getItem('eventos') || '[]');
+    if (eventos.length === 0) {
+      lista.innerHTML = "<p>Nenhum evento cadastrado.</p>";
+    } else {
+      eventos.forEach((evento, index) => {
+        const card = document.createElement('article');
+        card.innerHTML = `
+          <h3>${evento.titulo}</h3>
+          <p><strong>Data:</strong> ${evento.data}</p>
+          <p><strong>Local:</strong> ${evento.local}</p>
+          <p>${evento.descricao}</p>
+          <button onclick="removerEvento(${index})">Remover</button>
+        `;
+        lista.appendChild(card);
+      });
+    }
+
+    function removerEvento(i) {
+      if (confirm("Deseja remover este evento?")) {
+        eventos.splice(i, 1);
+        localStorage.setItem('eventos', JSON.stringify(eventos));
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>

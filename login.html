@@ -3,16 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
+  <title>VaiComTicket</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav class="container-fluid">
+    <ul><li><strong>VaiComTicket</strong></li></ul>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="evento.html">Eventos</a></li>
+      <li><a href="login.html" role="button">Entrar</a></li>
+    </ul>
+  </nav>
   <main class="container">
-    <h1>Entrar na Plataforma</h1>
-    <form>
-      <input type="email" placeholder="E-mail" required />
-      <input type="password" placeholder="Senha" required />
-      <button type="submit">Entrar</button>
-    </form>
+    <div class="grid">
+      <section>
+        <hgroup>
+          <h2>Encontre e Compre Ingressos</h2>
+          <h3>Para eventos incríveis em todo o Brasil</h3>
+        </hgroup>
+        <p>Compre, gerencie e crie eventos com facilidade.</p>
+        <figure>
+          <img src="https://source.unsplash.com/featured/?concert,event" alt="Evento destaque">
+          <figcaption><a href="https://unsplash.com" target="_blank">Imagem de Unsplash</a></figcaption>
+        </figure>
+        <h3>Como Funciona</h3>
+        <p>
+          1. Escolha o evento<br>
+          2. Compre seu ingresso<br>
+          3. Receba no e-mail ou celular
+        </p>
+      </section>
+    </div>
   </main>
+  <section aria-label="Inscreva-se">
+    <div class="container">
+      <article>
+        <hgroup>
+          <h2>Receba novidades</h2>
+          <h3>Eventos novos direto no seu e-mail</h3>
+        </hgroup>
+        <form class="grid">
+          <input type="text" name="nome" placeholder="Seu nome" required>
+          <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+          <button type="submit" onclick="event.preventDefault()">Inscrever</button>
+        </form>
+      </article>
+    </div>
+  </section>
+  <footer class="container">
+    <small><a href="#">Termos</a> • <a href="#">Privacidade</a></small>
+  </footer>
 </body>
 </html>
